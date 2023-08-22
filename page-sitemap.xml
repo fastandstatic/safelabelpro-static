@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>/</loc>
-		<lastmod>2023-08-15T21:35:44+00:00</lastmod>
+		<lastmod>2023-08-22T16:11:50+00:00</lastmod>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/08/Group-5151.svg</image:loc>
 		</image:image>
@@ -20,22 +20,6 @@
 		</image:image>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/07/Group-5284.png</image:loc>
-		</image:image>
-	</url>
-	<url>
-		<loc>/expandes-contect-label/</loc>
-		<lastmod>2023-08-14T16:43:07+00:00</lastmod>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5163.svg</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5088.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Mask-Group-28.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Mask-Group-29.png</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -79,6 +63,22 @@
 		</image:image>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/07/Image-14.png</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>/expandes-contect-label/</loc>
+		<lastmod>2023-08-22T16:12:05+00:00</lastmod>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/Group-5163.svg</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/Group-5088.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/Mask-Group-28.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/Mask-Group-29.png</image:loc>
 		</image:image>
 	</url>
 </urlset>
