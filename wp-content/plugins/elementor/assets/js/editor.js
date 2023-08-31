@@ -1,4 +1,4 @@
-/*! elementor - v3.16.0 - 20-08-2023 */
+/*! elementor - v3.16.0 - 31-08-2023 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -13774,6 +13774,8 @@ module.exports = ControlMediaItemView;
 "use strict";
 
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js"));
 // eslint-disable-next-line prefer-const
 var ControlDimensionsView = __webpack_require__(/*! elementor-controls/dimensions */ "../assets/dev/js/editor/controls/dimensions.js"),
   ControlGapItemView;
@@ -13789,6 +13791,21 @@ ControlGapItemView = ControlDimensionsView.extend({
   },
   getPossibleDimensions: function getPossibleDimensions() {
     return ['row', 'column'];
+  },
+  setValue: function setValue(key, value) {
+    var values = this.getControlValue();
+    if ('object' === (0, _typeof2.default)(key)) {
+      _.each(key, function (internalValue, internalKey) {
+        values[internalKey] = internalValue;
+      });
+    } else {
+      values[key] = value;
+    }
+    var conversion = this.model.get('conversion_map');
+    if (conversion && conversion.old_key && conversion.new_key) {
+      values[conversion.old_key] = parseInt(values[conversion.new_key]);
+    }
+    this.setSettingsModel(values);
   }
 });
 module.exports = ControlGapItemView;
@@ -15633,13 +15650,31 @@ ControlSliderItemView = ControlBaseUnitsItemView.extend({
     if (!isFrToCustom) {
       return;
     }
-    var sizeValue = this.isCustomUnit() ? (0, _helpers.convertSizeToFrString)(this.getSize()) : ((_this$getControlPlace2 = this.getControlPlaceholder()) === null || _this$getControlPlace2 === void 0 ? void 0 : _this$getControlPlace2.size) || ((_this$model$get2 = this.model.get('default')) === null || _this$model$get2 === void 0 ? void 0 : _this$model$get2.size);
+    var currentSize = this.getSize(),
+      alreadyConverted = 'string' === typeof currentSize && currentSize.includes('fr');
+    if (alreadyConverted) {
+      return;
+    }
+    var sizeValue = this.isCustomUnit() ? (0, _helpers.convertSizeToFrString)(currentSize) : ((_this$getControlPlace2 = this.getControlPlaceholder()) === null || _this$getControlPlace2 === void 0 ? void 0 : _this$getControlPlace2.size) || ((_this$model$get2 = this.model.get('default')) === null || _this$model$get2 === void 0 ? void 0 : _this$model$get2.size);
     this.setValue('size', sizeValue);
     this.render();
   },
   onBeforeDestroy: function onBeforeDestroy() {
     this.destroySlider();
     this.$el.remove();
+  },
+  onDeviceModeChange: function onDeviceModeChange() {
+    var _this = this;
+    var currentDeviceMode = elementor.channels.deviceMode.request('currentMode'),
+      isMobile = 'mobile' === currentDeviceMode,
+      isMobileValue = this.model.get('name').includes('_mobile'),
+      hasDefault = this.model.get('default'),
+      shouldRunConversion = isMobile && isMobileValue && hasDefault && this.isCustomUnit();
+    if (shouldRunConversion) {
+      setTimeout(function () {
+        _this.maybeDoFractionToCustomConversions();
+      });
+    }
   }
 });
 module.exports = ControlSliderItemView;
@@ -31910,6 +31945,7 @@ var _widgetResizeable = _interopRequireDefault(__webpack_require__(/*! ./behavio
 var _containerHelper = _interopRequireDefault(__webpack_require__(/*! elementor-editor-utils/container-helper */ "../assets/dev/js/editor/utils/container-helper.js"));
 var _emptyView = _interopRequireDefault(__webpack_require__(/*! elementor-elements/views/container/empty-view */ "../assets/dev/js/editor/elements/views/container/empty-view.js"));
 var _hooks = __webpack_require__(/*! elementor-document/hooks */ "../assets/dev/js/editor/document/hooks/index.js");
+var _utils = __webpack_require__(/*! elementor/modules/nested-elements/assets/js/editor/utils */ "../modules/nested-elements/assets/js/editor/utils.js");
 // Most of the code has been copied from `section.js`.
 
 var BaseElementView = __webpack_require__(/*! elementor-elements/views/base */ "../assets/dev/js/editor/elements/views/base.js");
@@ -32014,6 +32050,10 @@ var ContainerView = BaseElementView.extend({
       return 0;
     }
     return parent.view.getNestingLevel() + 1;
+  },
+  isNestedElementContentContainer: function isNestedElementContentContainer() {
+    var widgetType = this.container.parent.model.get('widgetType');
+    return widgetType && widgetType.trim() !== '' && (0, _utils.isWidgetSupportNesting)(widgetType);
   },
   getDroppableAxis: function getDroppableAxis() {
     var _axisMap;
@@ -32243,9 +32283,19 @@ var ContainerView = BaseElementView.extend({
     setTimeout(function () {
       _this3.nestingLevel = _this3.getNestingLevel();
       _this3.$el[0].dataset.nestingLevel = _this3.nestingLevel;
+      if (!_this3.model.get('isInner')) {
+        _this3.model.set('isInner', _this3.isNestedElementContentContainer() || _this3.getNestingLevel() > 0);
+      }
+
       // Add the EmptyView to the end of the Grid Container on initial page load if there are already some widgets.
       if (_this3.isGridContainer()) {
         _this3.reInitEmptyView();
+      }
+
+      // Todo: Remove in version 3.21.0: https://elementor.atlassian.net/browse/ED-11884.
+      // Remove together with support for physical properties inside the Mega Menu & Nested Carousel widgets.
+      if (!_this3.model.get('isInner')) {
+        _this3.$el[0].dataset.coreV316Plus = 'true';
       }
       _this3.droppableInitialize(_this3.container.settings);
     });
@@ -32255,7 +32305,6 @@ var ContainerView = BaseElementView.extend({
   },
   onAddChild: function onAddChild() {
     this.$el.removeClass('e-empty');
-    this.model.set('isInner', this.getNestingLevel() > 0);
     if (this.isGridContainer()) {
       this.handleGridEmptyView();
     }
@@ -37772,9 +37821,10 @@ var ContainerHelper = /*#__PURE__*/function () {
     /**
      * Create a Container element.
      *
-     * @param {Object}    settings - Settings to set to each Container.
-     * @param {Container} target   - The Container object to create the new Container elements inside.
-     * @param {Object}    options  - Additional command options.
+     * @param {Object}    settings        - Settings to set to each Container.
+     * @param {Container} target          - The Container object to create the new Container elements inside.
+     * @param {Object}    options         - Additional command options.
+     * @param {Object}    modelAttributes - Additional model attributes.
      *
      * @return {Container} - The newly created Container.
      */
@@ -37784,12 +37834,13 @@ var ContainerHelper = /*#__PURE__*/function () {
       var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var target = arguments.length > 1 ? arguments[1] : undefined;
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var modelAttributes = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
       return $e.run('document/elements/create', {
         container: target,
-        model: {
+        model: _objectSpread({
           elType: 'container',
           settings: settings
-        },
+        }, modelAttributes),
         options: options
       });
     }
@@ -37846,7 +37897,10 @@ var ContainerHelper = /*#__PURE__*/function () {
         } : {}), {}, {
           flex_gap: {
             unit: 'px',
-            size: 0 // Set the gap to 0 to override the default inherited from `Site Settings`.
+            size: 0,
+            // Set the gap to 0 to override the default inherited from `Site Settings`.
+            column: '0',
+            row: '0'
           }
         });
 
@@ -37927,10 +37981,12 @@ var ContainerHelper = /*#__PURE__*/function () {
                 flex_direction: ContainerHelper.DIRECTION_ROW,
                 flex_gap: {
                   unit: 'px',
-                  size: 0 // Set the gap to 0 to override the default inherited from `Site Settings`.
+                  size: 0,
+                  // Set the gap to 0 to override the default inherited from `Site Settings`.
+                  column: '0',
+                  row: '0'
                 }
               };
-
               if (!createWrapper) {
                 $e.run('document/elements/settings', {
                   container: target,
@@ -37962,7 +38018,10 @@ var ContainerHelper = /*#__PURE__*/function () {
                 // Create the right Container with 0 padding (default is 10px).
                 flex_gap: {
                   unit: 'px',
-                  size: 0 // Set the gap to 0 to override the default inherited from `Site Settings`.
+                  size: 0,
+                  // Set the gap to 0 to override the default inherited from `Site Settings`.
+                  column: '0',
+                  row: '0'
                 }
               }), newContainer, {
                 edit: false
@@ -40754,7 +40813,15 @@ var AddSectionBase = /*#__PURE__*/function (_Marionette$ItemView) {
           unit: 'fr',
           size: parsedStructure.rows
         }
-      }, elementor.getPreviewContainer(), this.options);
+      }, elementor.getPreviewContainer(), this.options, {
+        title: __('Grid', 'elementor'),
+        custom: {
+          isPreset: true,
+          preset_settings: {
+            presetIcon: 'eicon-container-grid'
+          }
+        }
+      });
       if (isAddedAboveAnotherContainer) {
         this.destroy();
       }
@@ -50142,6 +50209,45 @@ var LandingPageLibraryModule = /*#__PURE__*/function (_elementorModules$edi) {
 }(elementorModules.editor.utils.Module);
 var _default = LandingPageLibraryModule;
 exports["default"] = _default;
+
+/***/ }),
+
+/***/ "../modules/nested-elements/assets/js/editor/utils.js":
+/*!************************************************************!*\
+  !*** ../modules/nested-elements/assets/js/editor/utils.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/* provided dependency */ var sprintf = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["sprintf"];
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.extractNestedItemTitle = extractNestedItemTitle;
+exports.findChildContainerOrFail = findChildContainerOrFail;
+exports.isWidgetSupportNesting = isWidgetSupportNesting;
+function extractNestedItemTitle(container, index) {
+  var title = container.view.model.config.defaults.elements_title;
+
+  // Translations comes from server side.
+  return sprintf(title, index);
+}
+function isWidgetSupportNesting(widgetType) {
+  var widgetConfig = elementor.widgetsCache[widgetType];
+  if (!widgetConfig) {
+    return false;
+  }
+  return widgetConfig.support_nesting;
+}
+function findChildContainerOrFail(container, index) {
+  var childView = container.view.children.findByIndex(index);
+  if (!childView) {
+    throw new Error('Child container was not found for the current repeater item.');
+  }
+  return childView.getContainer();
+}
 
 /***/ }),
 
