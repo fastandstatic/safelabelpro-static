@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>/</loc>
-		<lastmod>2023-08-31T17:26:01+00:00</lastmod>
+		<lastmod>2023-09-01T14:15:40+00:00</lastmod>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/08/Group-5151.svg</image:loc>
 		</image:image>
@@ -10,38 +10,21 @@
 			<image:loc>/wp-content/uploads/2023/07/Group-5152.svg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5279.png</image:loc>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-165-860x1024.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5281.png</image:loc>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-166-867x1024.webp</image:loc>
 		</image:image>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/07/Group-5282.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5284.png</image:loc>
-		</image:image>
-	</url>
-	<url>
-		<loc>/shrink-sleeves/</loc>
-		<lastmod>2023-08-15T20:11:28+00:00</lastmod>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5278.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5279-1.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5280.png</image:loc>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-167-811x1024.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
 		<loc>/premium-labels/</loc>
 		<lastmod>2023-08-15T20:28:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>/sustainable-solutions/</loc>
-		<lastmod>2023-08-15T21:20:53+00:00</lastmod>
 	</url>
 	<url>
 		<loc>/about-us/</loc>
@@ -66,19 +49,39 @@
 		</image:image>
 	</url>
 	<url>
+		<loc>/shrink-sleeves/</loc>
+		<lastmod>2023-09-01T14:10:34+00:00</lastmod>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/Group-5278.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/Group-5279-1.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/09/Group-5290.png</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>/sustainable-solutions/</loc>
+		<lastmod>2023-09-01T14:13:24+00:00</lastmod>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/09/Mask-Group-142.png</image:loc>
+		</image:image>
+	</url>
+	<url>
 		<loc>/expandes-contect-label/</loc>
-		<lastmod>2023-08-22T16:12:05+00:00</lastmod>
+		<lastmod>2023-09-01T14:16:21+00:00</lastmod>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/07/Group-5163.svg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5088.png</image:loc>
+			<image:loc>/wp-content/uploads/2023/09/Mask-Group-127.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Mask-Group-28.png</image:loc>
+			<image:loc>/wp-content/uploads/2023/09/Mask-Group-125.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Mask-Group-29.png</image:loc>
+			<image:loc>/wp-content/uploads/2023/09/Mask-Group-126.png</image:loc>
 		</image:image>
 	</url>
 </urlset>
