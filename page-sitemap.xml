@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>/</loc>
-		<lastmod>2023-09-01T15:48:15+00:00</lastmod>
+		<lastmod>2023-09-01T16:26:20+00:00</lastmod>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/08/Group-5151.svg</image:loc>
 		</image:image>
@@ -36,8 +36,41 @@
 		</image:image>
 	</url>
 	<url>
+		<loc>/sustainable-solutions/</loc>
+		<lastmod>2023-09-01T15:10:06+00:00</lastmod>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/09/Mask-Group-142.png</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>/premium-labels/</loc>
+		<lastmod>2023-09-01T16:00:35+00:00</lastmod>
+	</url>
+	<url>
+		<loc>/about-us/</loc>
+		<lastmod>2023-09-01T16:06:42+00:00</lastmod>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-165-1.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-167-1.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-169.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-166-1.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-168.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/07/mask-group-170.webp</image:loc>
+		</image:image>
+	</url>
+	<url>
 		<loc>/expandes-contect-label/</loc>
-		<lastmod>2023-09-01T15:05:28+00:00</lastmod>
+		<lastmod>2023-09-01T16:11:45+00:00</lastmod>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/07/Group-5163.svg</image:loc>
 		</image:image>
@@ -49,39 +82,6 @@
 		</image:image>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/09/Mask-Group-126.png</image:loc>
-		</image:image>
-	</url>
-	<url>
-		<loc>/premium-labels/</loc>
-		<lastmod>2023-09-01T15:09:01+00:00</lastmod>
-	</url>
-	<url>
-		<loc>/sustainable-solutions/</loc>
-		<lastmod>2023-09-01T15:10:06+00:00</lastmod>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/09/Mask-Group-142.png</image:loc>
-		</image:image>
-	</url>
-	<url>
-		<loc>/about-us/</loc>
-		<lastmod>2023-09-01T15:11:39+00:00</lastmod>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5279.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5282.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Mask-Group-28.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5281.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5284.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Image-14.png</image:loc>
 		</image:image>
 	</url>
 </urlset>
