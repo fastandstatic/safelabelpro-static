@@ -8,13 +8,6 @@
 		</image:image>
 	</url>
 	<url>
-		<loc>/multi-scroll-templat/premium-labels/</loc>
-		<lastmod>2023-09-01T16:50:00+00:00</lastmod>
-		<image:image>
-			<image:loc>/wp-content/uploads/2023/07/Group-5282.png</image:loc>
-		</image:image>
-	</url>
-	<url>
 		<loc>/multi-scroll-templat/1936-2/</loc>
 		<lastmod>2023-09-01T16:53:42+00:00</lastmod>
 		<image:image>
@@ -68,6 +61,13 @@
 		<lastmod>2023-09-13T13:51:27+00:00</lastmod>
 		<image:image>
 			<image:loc>/wp-content/uploads/2023/07/mask-group-186.webp</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>/multi-scroll-templat/premium-labels/</loc>
+		<lastmod>2023-09-14T15:54:09+00:00</lastmod>
+		<image:image>
+			<image:loc>/wp-content/uploads/2023/09/Mask-Group-142.png</image:loc>
 		</image:image>
 	</url>
 </urlset>
